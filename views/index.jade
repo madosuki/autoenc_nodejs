@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 自動エンコード 
+  p ニコニコ動画向けの動画をエンコードするサービスです。 
+  div.UploadForm
+  form(method="post", action="/upload", enctype="multipart/form-data")
+    div.input
+      input(type="file", name="videos")
+      input(type="submit", name="filesend", value="送信")
+      
+  div.EncodeForm
+    form(method="post", action!=encodestart)
+      div.input
+        p!=encodeptag_eco
+        p!=encodeptag_nor
+        p!=encodeptag_pre
+        p!=encpath
+        p!=submitenc
+    p!=uploadedname
+
+  div.DeleteForm
+    form(method="post", action!=deleteaction)
+      div.input
+        p!=origdel
+        p!=origdelpath
+        p!=encdel
+        p!=encdelpath
+
+  div.stream
+    p!=video
